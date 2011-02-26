@@ -64,7 +64,7 @@ public class MainActivity extends ListActivity {
 		Node local = (Node) l.getItemAtPosition(position);
 		
 		if(local.isDir()){
-	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", local.getNameText());  
+	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", local.getNameText() + "/");  
 	        startActivity(main_menu); 
 		}else{
 			Intent main_menu = new Intent(this,FinalNode.class);  
@@ -128,7 +128,7 @@ public class MainActivity extends ListActivity {
     		
     		if(archivo.isFile()){
     			String fileName = archivo.getName();
-    			String nodeName = "";
+    			
     			if (fileName.endsWith(".txt")){
     				try{
 	    				FileReader fr = new FileReader(archivo.getAbsoluteFile());
@@ -140,17 +140,25 @@ public class MainActivity extends ListActivity {
 	    				} 
 	    				
 	    				JSONObject jsonFile = new JSONObject(stringFile);
-	    				nodeName = jsonFile.getString("nameText");
+	    				
+	    				
+	    				Node o1 = new Node();
+	    				o1.setNameText(jsonFile.getString("nameText"));
+	    				o1.setImageName(globalPath + relativePath + jsonFile.getString("imageName"));
+	    				o1.setDir(false);
+	    				nodesArray.add(o1);
+	    				
+	    				
     				}catch (Exception e){
     					
     				}
     				    				
     				
-    				Node o1 = new Node();
+    			/*	Node o1 = new Node();
     				//o1.setNameText(fileName.replaceAll(".txt", ""));
     				o1.setNameText(nodeName);
     				o1.setDir(false);
-    				nodesArray.add(o1);
+    				nodesArray.add(o1);*/
     			}	
     		}else if(archivo.isDirectory()){
     			Node o1 = new Node();

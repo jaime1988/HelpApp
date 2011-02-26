@@ -56,6 +56,8 @@ public class NodeListViewAdapter extends ArrayAdapter<Node> {
 	                        if(o.isDir()){
 	                        	im.setImageResource(R.drawable.directory);
 	                        	
+	                        }else{
+	                        	im.setImageURI(Uri.parse("file://" + o.getImageName()));
 	                        }
 	                        //im.setImageURI(Uri.parse("file:///sdcard/external_sd/demoApp/gas.png"));
 	                    //    im.setImageURI(Uri.parse("file:///sdcard/external_sd/demoApp/" + o.getImageName()));
