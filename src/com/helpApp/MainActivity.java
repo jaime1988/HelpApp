@@ -67,7 +67,13 @@ public class MainActivity extends ListActivity {
 	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", local.getNameText() + "/");  
 	        startActivity(main_menu); 
 		}else{
-			Intent main_menu = new Intent(this,FinalNode.class);  
+			Intent main_menu = new Intent(this,FinalNode.class);
+			main_menu.putExtra("path", globalPath + relativePath);
+			main_menu.putExtra("nameText", local.getNameText());
+			main_menu.putExtra("speakText", local.getSpeakText());
+			main_menu.putExtra("longText", local.getLongText());
+			main_menu.putExtra("imageName", local.getImageName());
+
 			startActivity(main_menu); 
 		}
 	}
@@ -145,6 +151,8 @@ public class MainActivity extends ListActivity {
 	    				Node o1 = new Node();
 	    				o1.setNameText(jsonFile.getString("nameText"));
 	    				o1.setImageName(globalPath + relativePath + jsonFile.getString("imageName"));
+	    				o1.setLongText(jsonFile.getString("longText"));
+	    				o1.setSpeakText(jsonFile.getString("speakText"));
 	    				o1.setDir(false);
 	    				nodesArray.add(o1);
 	    				
