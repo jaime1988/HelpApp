@@ -27,14 +27,15 @@ public class MainActivity extends ListActivity {
 	private ArrayList<Node> nodesArray = null;
 	private NodeListViewAdapter nodesAdapter;
 	private static String globalPath = "/sdcard/external_sd/helpApp/";
-	private static String relativePath = "";
+	private String relativePath = "";
 
-	public static String getRelativePath() {
+
+	public String getRelativePath() {
 		return relativePath;
 	}
 
-	public static void setRelativePath(String relativePath) {
-		MainActivity.relativePath = relativePath;
+	public void setRelativePath(String relativePath) {
+		this.relativePath = relativePath;
 	}
 
 	/** Called when the activity is first created. */
