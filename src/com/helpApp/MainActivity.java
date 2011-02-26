@@ -63,14 +63,6 @@ public class MainActivity extends ListActivity {
 	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", local.getNameText());  
 	        startActivity(main_menu); 
 		}
-		// Toast.makeText(this, local.getLocalName(),
-		// Toast.LENGTH_LONG).show();
-		// Intent main_menu = new
-		// Intent(this,FinalNode.class).putExtra("prueba",
-		// local.getLocalName());
-		// startActivity(main_menu);
-		// startActivity(new Intent(this, PersonListActivity.class).putExtra(
-		// "name", names.get(position)));
 	}
 
 	/*
@@ -81,9 +73,7 @@ public class MainActivity extends ListActivity {
 
 		try {
 			nodesArray = new ArrayList<Node>();
-			Node o1 = new Node();
-			o1.setNameText("Prueba");
-			nodesArray.add(o1);
+
 			getFiles(nodesArray);
 			/*
 			 * Node o5 = new Node(); o5.setLocalName("Tiendas");
@@ -130,10 +120,13 @@ public class MainActivity extends ListActivity {
     		}
     		
     		if(archivo.isFile()){
-    			Node o1 = new Node();
-    			o1.setNameText(archivo.getName());
-    			o1.setDir(false);
-    			nodesArray.add(o1);
+    			String fileName = archivo.getName();
+    			if (fileName.endsWith(".txt")){
+    				Node o1 = new Node();
+    				o1.setNameText(fileName.replaceAll(".txt", ""));
+    				o1.setDir(false);
+    				nodesArray.add(o1);
+    			}	
     		}else if(archivo.isDirectory()){
     			Node o1 = new Node();
     			o1.setNameText(archivo.getName());
