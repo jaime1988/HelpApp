@@ -1,7 +1,11 @@
 package com.helpApp;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
+
+import org.json.JSONObject;
 
 
 import android.app.ListActivity;
@@ -62,6 +66,9 @@ public class MainActivity extends ListActivity {
 		if(local.isDir()){
 	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", local.getNameText());  
 	        startActivity(main_menu); 
+		}else{
+			Intent main_menu = new Intent(this,FinalNode.class);  
+			startActivity(main_menu); 
 		}
 	}
 
@@ -121,9 +128,27 @@ public class MainActivity extends ListActivity {
     		
     		if(archivo.isFile()){
     			String fileName = archivo.getName();
+    			String nodeName = "";
     			if (fileName.endsWith(".txt")){
+    				try{
+	    				FileReader fr = new FileReader(archivo.getAbsoluteFile());
+	    				BufferedReader bf = new BufferedReader(fr); 
+	    				String stringFile = "";
+	    				String sCadena;
+	    				while ((sCadena = bf.readLine())!=null) {
+	    					stringFile += sCadena;
+	    				} 
+	    				
+	    				JSONObject jsonFile = new JSONObject(stringFile);
+	    				nodeName = jsonFile.getString("nameText");
+    				}catch (Exception e){
+    					
+    				}
+    				    				
+    				
     				Node o1 = new Node();
-    				o1.setNameText(fileName.replaceAll(".txt", ""));
+    				//o1.setNameText(fileName.replaceAll(".txt", ""));
+    				o1.setNameText(nodeName);
     				o1.setDir(false);
     				nodesArray.add(o1);
     			}	

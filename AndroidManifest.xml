@@ -12,7 +12,9 @@
             </intent-filter>
         </activity>
 
-    </application>
+    
+<activity android:name="FinalNode"></activity>
+</application>
 
 
 </manifest> 
