@@ -65,8 +65,9 @@ public class MainActivity extends ListActivity {
 		Node local = (Node) l.getItemAtPosition(position);
 		
 		if(local.isDir()){
-	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", local.getNameText() + "/");  
-	        startActivity(main_menu); 
+	       Intent main_menu = new Intent(this,MainActivity.class).putExtra("relativePath", relativePath + "/" + local.getNameText() + "/");
+	       //Log.e("DEB", local.getNameText() + "/");
+	       startActivity(main_menu); 
 		}else{
 			Intent main_menu = new Intent(this,FinalNode.class);
 			main_menu.putExtra("path", globalPath + relativePath);
@@ -106,7 +107,7 @@ public class MainActivity extends ListActivity {
 			 * nodesArray.add(o1); nodesArray.add(o2); nodesArray.add(o3);
 			 * nodesArray.add(o4); nodesArray.add(o5);
 			 */
-			Log.i("Locales añadidos ", "" + nodesArray.size());
+			Log.i("Locales anadidos ", "" + nodesArray.size());
 		} catch (Exception e) {
 			Log.e("BACKGROUND_PROC", e.getMessage());
 		}

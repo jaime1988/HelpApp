@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ public class FinalNode extends Activity implements OnInitListener {
 
 		try {
 			nodePath = bundle.getString("path");
+			//Log.e("KKKKK", nodePath);
 			theNode.setDir(false);
 			theNode.setNameText(bundle.getString("nameText"));
 			theNode.setSpeakText(bundle.getString("speakText"));
