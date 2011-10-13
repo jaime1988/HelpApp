@@ -27,6 +27,7 @@ public class MainActivity extends ListActivity {
 	private ArrayList<Node> nodesArray = null;
 	private NodeListViewAdapter nodesAdapter;
 	private static String globalPath = "/sdcard/external_sd/helpApp/";
+	//private static String globalPath = "/sdcard/helpApp/";
 	private String relativePath = "";
 
 
@@ -43,6 +44,7 @@ public class MainActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		Log.e("DEB",  "AAAAAAAAAAAAAAAAAAA");
 
 		nodesArray = new ArrayList<Node>();
 		this.nodesAdapter = new NodeListViewAdapter(this, R.layout.item,
